@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="favicon.ico">
+
+		<title>Starter Template for Bootstrap</title>
+
+		<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+		<link href="starter-template.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Alexa Scorekeeper</a>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home</a></li>
+						<li><a href="#about">About</a></li>
+						<li><a href="#contact">Contact</a></li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</nav>
+		<div class="container">
+			<div class="starter-template">
+				<h1>Start a New Game</h1>
+				<h3>
+					<form>
+						<div id="container">
+							<div>
+								Player 1 : <input type="text" name="p1" class="inputplayers">
+							</div>
+							<div>
+								Player 2 : <input type="text" name="p2" class="inputplayers">
+							</div>
+							<div>
+								<button type="button" class="modplayers" id="add" onclick="modPlayers(1)">Add a Player</button>
+								<button type="button" class="modplayers" id="remove" onclick="modPlayers(-1)" disabled style="color:grey;">Remove a Player</button>
+							</div>
+							<div>
+								<button type="button" class="modplayers" id="submit" onclick="startGame()">Start Game</button>
+							</div>
+						</div>
+					</form>
+				</h3>
+			</div>
+		</div><!-- /.container -->
+		
+		<script>
+			function modPlayers(change) {
+				var list = document.getElementById("container");
+				var numPlayers = list.children.length - 2 + change;
+				
+				if (change == -1){
+					list.removeChild(list.children[numPlayers]);
+				}
+				else if (change == 1){
+					var newDiv = document.createElement("div");
+					list.insertBefore(newDiv, list.children[numPlayers - 1]);
+					newDiv.innerText = "Player " + numPlayers + " : ";
+					
+					var newInput = document.createElement("input");
+					newInput.type = "text";
+					newInput.name = "p" + numPlayers;
+					newInput.className = "inputplayers";
+					newDiv.appendChild(newInput);
+				}
+				
+				document.getElementById("remove").disabled = (numPlayers == 2)? true : false;
+				document.getElementById("remove").style.color = (numPlayers == 2)? "grey" : "white";
+				document.getElementById("add").disabled = (numPlayers == 8)? true : false;
+				document.getElementById("add").style.color = (numPlayers == 8)? "grey" : "white";
+			}
+			function startGame() {
+				var list = document.getElementById("container");
+				var numPlayers = list.children.length - 2;
+				
+				var newDiv = document.createElement("div");
+				newDiv.append(">> DEBUG : Submit with values");
+				for (i = 1; i <= numPlayers; i++) {
+					newDiv.append(document.createElement("br"));
+					newDiv.append("p" + i + ": " + document.getElementsByName("p" + i)[0].value);
+				}
+				
+				list.appendChild(newDiv);
+
+				document.getElementById("remove").disabled = true;
+				document.getElementById("remove").style.color = "grey";
+				document.getElementById("add").disabled = true;
+				document.getElementById("add").style.color = "grey";
+				document.getElementById("submit").disabled = true;
+				document.getElementById("submit").style.color = "grey";
+			}
+		</script>
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	</body>
+</html>
