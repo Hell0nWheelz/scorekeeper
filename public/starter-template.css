@@ -1,0 +1,35 @@
+body {
+	font-family: "chalkboard", Verdana, Tahoma;
+	padding-top: 50px;
+
+	margin: 0;
+	background-image: url(/chalkboard.jpg);
+	background-size: 1600px 1200px;
+	background-repeat:no-repeat;
+	display: compact;
+}
+@font-face {
+	font-family: "chalkboard";
+	src: url(/coolcrayon.ttf) format("truetype");
+}
+.starter-template {
+	padding: 40px 15px;
+	text-align: center;
+	color: white;
+}
+.inputplayers {
+	background-color: transparent;
+	border-style: solid;
+	border-radius: 5px;
+	text-align: center;
+	padding: 5px 5px 5px 5px;
+	margin: 5px 0px 5px 0px;
+}
+.modplayers {
+	background-color: transparent;
+	border-style: solid;
+	border-radius: 5px;
+	text-align: center;
+	padding: 5px 5px 5px 5px;
+	margin: 5px 0px 5px 0px;
+}

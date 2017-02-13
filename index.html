@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+ 
+<!-- If IE use the latest rendering engine -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 
+<!-- Set the page to the width of the device and set the zoon level -->
+<meta name="viewport" content="width = device-width, initial-scale = 1">
+<title>Alexa Score Keeper</title>
+<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+ 
+<style>
+
+body{
+	background-image: url("img/background-linepaper.png");
+	background-repeat: repeat;
+}
+
+@font-face {
+	font-family: 'finecollege';
+	src: url('bootstrap-3.3.7-dist/fonts/FineCollege.ttf') format('truetype');
+}
+
+.Title {
+	text-align: center;
+	font-family: 'finecollege';
+	font-size: 128px;
+}
+
+.Nav {
+	font-family: 'finecollege';
+	font-size: 50px;
+}
+
+</style>
+ 
+</head>
+<body>
+<!-- Navbar -->
+
+<nav class="navbar navbar-default">	
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="pull-left"><img src="img/inserthere.png"></a>
+		
+	</div>
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="#" class="Nav">Home</a></li>
+			<li><a href="#" class="Nav">About</a></li>
+			<li><a href="#" class="Nav">Contact Us</a></li>
+		</ul>
+</nav>
+<!-- Navbar End -->
+
+<div class="jumbotron">
+	<h1 class='Title'>Create Game</h1>
+</div>
+
+
+
+<div class="container">
+
+<div id="playerlist">
+	<div id="player1">
+		<div  class="input-group input-group-lg">
+			<span class="input-group-addon">Player 1</span>
+			<input type="text" class="form-control" placeholder="Name">
+		</div>
+	</div>
+
+	<div id="player2">
+		<div class="input-group input-group-lg">
+			<span class="input-group-addon">Player 2</span>
+			<input type="text" class="form-control" placeholder="Name">
+		</div>
+	</div>
+
+
+</div>
+
+
+<br>
+<input type="button" value="Add Player" class="btn btn-default btn-lg" onclick="addPlayer()" />
+
+<input type="button" value="Remove Player" class="btn btn-default btn-lg" onclick="removePlayer()" />
+<br>
+<br>
+<input type="button" value="Start Game" class="btn btn-default btn-lg" onclick="#" />
+
+</div>
+
+
+
+<script type="text/javascript">
+var count = 2;
+
+function addPlayer() {	        
+	count++;
+
+	var div = document.createElement("div");
+	div.className = "input-group input-group-lg";
+
+	var player2= document.createElement("span");
+	player2.className = "input-group-addon";
+	var p2 = document.createTextNode("Player " + count);
+	player2.appendChild(p2);
+
+	var input= document.createElement("input");
+	input.className = "form-control";
+	input.type = "text";
+	input.placeholder = "Name";
+
+	div.appendChild(player2);
+	div.appendChild(input);
+
+	document.getElementById("playerlist").appendChild(div);
+}
+
+function removePlayer() {
+	if(count > 2){
+		var last = document.getElementById("playerlist");
+		last.removeChild(last.lastChild);
+		count--;
+	}
+}
+
+
+
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</body>
+</html>

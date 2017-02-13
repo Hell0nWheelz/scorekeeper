@@ -1,0 +1,3 @@
+Warn if to many players are added
+Warn when user tries to remove player 2
+Make player list, buttons, and navbar match style
